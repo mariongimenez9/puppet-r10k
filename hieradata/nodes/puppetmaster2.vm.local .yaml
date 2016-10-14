@@ -1,0 +1,4 @@
+---
+
+profiles::puppetmaster::use_puppetdb: true
+profiles::puppetmaster::use_puppetboard: true

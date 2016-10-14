@@ -1,7 +1,7 @@
 ---
 puppet_server: 'puppetmaster.vm.local'
 puppetdb_host: 'puppetdb.vm.local'
-
+puppet_ca_server: 'puppetmaster.vm.local'
 packages:
     vim: { ensure: present }
     tmux: { ensure: present }

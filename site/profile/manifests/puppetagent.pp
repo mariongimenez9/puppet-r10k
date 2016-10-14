@@ -13,6 +13,7 @@
 
 class profile::puppetagent(
     $puppetmaster=hiera('puppet_server','puppet')
+	$puppet_ca_server=hiera('puppet_ca_server','puppet')
 ) {
 
   filebucket { 'puppetmaster':
@@ -33,6 +34,15 @@ class profile::puppetagent(
     show_diff => true
   }
 
+  ini_setting { "Puppet server":
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'agent',
+    setting => 'ca_server',
+    value   => "$puppet_ca_server",
+    show_diff => true
+  }
+  
   service { 'puppet':
     ensure => running,
     enable => true  

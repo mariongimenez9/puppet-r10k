@@ -26,7 +26,17 @@
 
 class profile::puppetmaster(
     $use_puppetdb=hiera('profiles::puppetmaster::use_puppetdb',false)
+	$use_puppetca=hiera('profiles::puppetmaster::use_puppetca',false)
 ) {
+
+  ini_setting { "Puppet server":
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'master',
+    setting => 'ca',
+    value   => "$use_puppetca",
+    show_diff => true
+  }
 
   class { 'puppetserver':
     config => {

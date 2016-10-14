@@ -8,6 +8,10 @@ node 'puppetmaster' {
   include role::master
 }
 
+node 'puppetmaster2' {
+  include role::master
+}
+
 node 'puppetdb' {
   include role::puppetdb
 }
