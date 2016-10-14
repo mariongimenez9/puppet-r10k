@@ -12,8 +12,8 @@
 #
 
 class profile::puppetagent(
-    $puppetmaster=hiera('puppet_server','puppet')
-	$puppet_ca_server=hiera('puppet_ca_server','puppet')
+    $puppetmaster=hiera('puppet_server','puppet'),
+    $puppet_ca_server=hiera('puppet_ca_server','puppet'),
 ) {
 
   filebucket { 'puppetmaster':
