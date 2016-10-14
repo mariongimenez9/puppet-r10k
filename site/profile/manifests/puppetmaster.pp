@@ -29,7 +29,7 @@ class profile::puppetmaster(
 	$use_puppetca=hiera('profiles::puppetmaster::use_puppetca',false),
 ) {
 
-  ini_setting { "Puppet server":
+  ini_setting { "Puppet ca":
     ensure  => present,
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'master',

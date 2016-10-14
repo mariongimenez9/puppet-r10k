@@ -34,7 +34,7 @@ class profile::puppetagent(
     show_diff => true
   }
 
-  ini_setting { "Puppet server":
+  ini_setting { "Puppet ca_server":
     ensure  => present,
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'agent',
