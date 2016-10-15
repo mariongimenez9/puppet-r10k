@@ -7,3 +7,4 @@ profiles::puppetmaster::use_puppetca: true
 profiles::puppetmaster::autosign_hosts:
   - 'puppetdb.vm.local'
   - 'puppetreports.vm.local'
+  - 'puppetmaster2.vm.local'
