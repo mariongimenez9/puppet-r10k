@@ -19,3 +19,7 @@ node 'puppetdb' {
 node 'puppetreports' {
   include role::puppetreports
 }
+
+node 'puppetjenkins' {
+  include role::puppetjenkins
+}
