@@ -19,4 +19,8 @@ mod 'puppet/puppetboard'
 mod "puppetlabs/vcsrepo"
 mod "stahnma/epel"
 mod "stankevich/python"
+
 mod "rtyler/jenkins"
+mod "puppetlabs/java"
+mod "darin/zypprepo"
+mod "puppet/archive"
