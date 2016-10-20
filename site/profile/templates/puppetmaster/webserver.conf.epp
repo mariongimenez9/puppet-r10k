@@ -1,0 +1,5 @@
+<% if $webserver =~ Array { -%>
+<% $webserver.each |$host| { -%>
+<%= $host %>
+<% } -%>
+<% } -%>
