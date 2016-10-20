@@ -43,12 +43,12 @@ class profile::puppetmaster(
   
   if $isnt_ca {
   file { "/etc/puppetlabs/puppetserver/services.d/ca.cfg":
-	ensure => file
-	content => epp('profile/puppetmaster/ca.cfg.epp',{ 'ca' => hiera('profiles::puppetmaster::ca',[])})
+	ensure => file,
+	content => epp('profile/puppetmaster/ca.cfg.epp',{ 'ca' => hiera('profiles::puppetmaster::ca',[])}),
 	}
   file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
-	ensure => file
-	content => epp('profile/puppetmaster/webserver.conf.epp',{ 'webserver' => hiera('profiles::puppetmaster::webserver',[])})
+	ensure => file,
+	content => epp('profile/puppetmaster/webserver.conf.epp',{ 'webserver' => hiera('profiles::puppetmaster::webserver',[])}),
 	}
   }
 
