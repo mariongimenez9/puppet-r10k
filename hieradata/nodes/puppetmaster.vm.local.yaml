@@ -2,9 +2,10 @@
 
 profiles::puppetmaster::use_puppetdb: true
 profiles::puppetmaster::use_puppetboard: true
-profiles::puppetmaster::use_puppetca: true
+profiles::puppetmaster::isnt_ca: false
 
 profiles::puppetmaster::autosign_hosts:
   - 'puppetdb.vm.local'
   - 'puppetreports.vm.local'
   - 'puppetmaster2.vm.local'
+  - 'puppetca.vm.local'

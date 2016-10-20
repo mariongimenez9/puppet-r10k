@@ -16,6 +16,14 @@
 class profile::puppetjenkins(
 ) {
 
+  class { 'jenkins':
+ }
   
+  jenkins::user { 'test':
+	password => 'test'
+  }
 
+  jenkins::plugin { 'gitlab': }
+  jenkins::plugin { 'gitlab-hook': }
+  
 }

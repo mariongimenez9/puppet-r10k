@@ -26,17 +26,8 @@
 
 class profile::puppetmaster(
     $use_puppetdb=hiera('profiles::puppetmaster::use_puppetdb',false),
-	$use_puppetca=hiera('profiles::puppetmaster::use_puppetca',false),
+	$use_puppetca=hiera('profiles::puppetmaster::$isnt_ca',true),
 ) {
-
-  ini_setting { "Puppet ca":
-    ensure  => present,
-    path    => '/etc/puppetlabs/puppet/puppet.conf',
-    section => 'master',
-    setting => 'ca',
-    value   => "$use_puppetca",
-    show_diff => true
-  }
 
   class { 'puppetserver':
     config => {
@@ -49,6 +40,17 @@ class profile::puppetmaster(
   contain 'puppetserver'
   # Ensure server starts before agent to avoid key issues
   # Service['puppetserver']->Service['puppet']
+  
+  if $isnt_ca {
+  file { "/etc/puppetlabs/puppetserver/services.d/ca.cfg":
+	ensure => file
+	content => epp('profile/puppetmaster/ca.cfg.epp',{ 'ca' => hiera('profiles::puppetmaster::ca',[])})
+	}
+  file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
+	ensure => file
+	content => epp('profile/puppetmaster/webserver.conf.epp',{ 'webserver' => hiera('profiles::puppetmaster::webserver',[])})
+	}
+  }
 
   $confdir = $::settings::confdir
   file { "${confdir}/autosign.conf":

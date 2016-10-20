@@ -5,5 +5,5 @@
 class role::puppetjenkins {
   include ::profile::base
   include ::profile::puppetagent
-  include ::jenkins
+  include ::profile::puppetjenkins
 }
