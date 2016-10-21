@@ -50,16 +50,23 @@ class profile::puppetmaster(
   #	ensure => file,
   #	content => epp('profile/puppetmaster/webserver.conf.epp',{ 'webserver' => hiera('profiles::puppetmaster::webserver',[])}),
   #	}
-  file { "/etc/puppetlabs/puppetserver/services.d/ca.cfg":
-    ensure => file,
-  	content => template('profile/puppetmaster/ca.cfg.erb'),
-	path => '/etc/puppetlabs/puppetserver/services.d/ca.cfg',
-  	}
   file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
   	ensure => file,
   	content => template('profile/puppetmaster/webserver.conf.epp'),
 	path => /etc/puppetlabs/puppetserver/conf.d/webserver.conf,
   	}
+  file_line { 'disable ca.cfg':
+	#ensure => file,
+	path => '/etc/puppetlabs/puppetserver/services.d/ca.cfg',
+	line => 'puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service',
+	match => '^#puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service',
+	}
+  file_line { 'enable ca.cfg':
+	#ensure => file,
+	path => '/etc/puppetlabs/puppetserver/services.d/ca.cfg',
+	line => '#puppetlabs.services.ca.certificate-authority-service/certificate-authority-service',
+	match => '^puppetlabs.services.ca.certificate-authority-service/certificate-authority-service',
+	}
   }
 
   $confdir = $::settings::confdir
