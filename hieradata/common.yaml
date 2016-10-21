@@ -1,5 +1,5 @@
 ---
-puppet_server: 'puppetmaster.vm.local'
+puppet_server: 'puppetlb.vm.local'
 puppetdb_host: 'puppetdb.vm.local'
 puppet_ca_server: 'puppetmaster.vm.local'
 packages:
