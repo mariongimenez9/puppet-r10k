@@ -53,7 +53,7 @@ class profile::puppetmaster(
   file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
   	ensure => file,
   	content => template('profile/puppetmaster/webserver.conf.epp'),
-	path => /etc/puppetlabs/puppetserver/conf.d/webserver.conf,
+	path => '/etc/puppetlabs/puppetserver/conf.d/webserver.conf',
   	}
   file_line { 'disable ca.cfg':
 	#ensure => file,
