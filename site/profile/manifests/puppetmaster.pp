@@ -26,7 +26,7 @@
 
 class profile::puppetmaster(
     $use_puppetdb=hiera('profiles::puppetmaster::use_puppetdb',false),
-	$use_puppetca=hiera('profiles::puppetmaster::$isnt_ca',true),
+	$use_puppetca=hiera('profiles::puppetmaster::isnt_ca',true),
 ) {
 
   class { 'puppetserver':
