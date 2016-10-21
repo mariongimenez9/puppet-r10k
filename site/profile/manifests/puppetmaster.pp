@@ -53,7 +53,7 @@ class profile::puppetmaster(
   file_line { 'ca.cfg':
 	ensure => file,
 	path => '/etc/puppetlabs/puppetserver/services.d/ca.cfg',
-	line => '#puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service',
+	line => 'puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service',
 	match => '^#puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service',
 	}
   file_line { 'ca.cfg':
