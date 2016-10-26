@@ -42,14 +42,6 @@ class profile::puppetmaster(
   # Service['puppetserver']->Service['puppet']
   
   if $isnt_ca {
-  #file { "/etc/puppetlabs/puppetserver/services.d/ca.cfg":
-  #	ensure => file,
-  #	content => epp('profile/puppetmaster/ca.cfg.epp',{ 'ca' => hiera('profiles::puppetmaster::ca',[])}),
-  #	}
-  #file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
-  #	ensure => file,
-  #	content => epp('profile/puppetmaster/webserver.conf.epp',{ 'webserver' => hiera('profiles::puppetmaster::webserver',[])}),
-  #	}
   file { "/etc/puppetlabs/puppetserver/conf.d/webserver.conf":
   	ensure => file,
   	content => template('profile/puppetmaster/webserver.conf.erb'),
@@ -67,6 +59,24 @@ class profile::puppetmaster(
 	line => '#puppetlabs.services.ca.certificate-authority-service/certificate-authority-service',
 	match => '^puppetlabs.services.ca.certificate-authority-service/certificate-authority-service',
 	}
+  ini_setting { "Puppet dns_alt_names":
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'agent',
+    setting => 'dns_alt_names',
+    value   => "$dns_alt_names",
+    show_diff => true
+    }
+  }
+  else {
+  ini_setting { "Puppet dns_alt_names ca":
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'master',
+    setting => 'dns_alt_names',
+    value   => "$dns_alt_names",
+    show_diff => true
+    }
   }
 
   $confdir = $::settings::confdir

@@ -3,9 +3,9 @@
 profiles::puppetmaster::use_puppetdb: true
 profiles::puppetmaster::use_puppetboard: true
 profiles::puppetmaster::isnt_ca: false
+profiles::puppetmaster::dns_alt_names : 'puppetmaster2.vm.local,puppetlb.vm.local'
 
 profiles::puppetmaster::autosign_hosts:
   - 'puppetdb.vm.local'
   - 'puppetreports.vm.local'
-  - 'puppetmaster2.vm.local'
   - 'puppetca.vm.local'
