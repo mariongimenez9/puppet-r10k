@@ -27,6 +27,7 @@
 class profile::puppetmaster(
     $use_puppetdb=hiera('profiles::puppetmaster::use_puppetdb',false),
 	$isnt_ca=hiera('profiles::puppetmaster::isnt_ca',true),
+	$dns_alt_names=hiera('profiles::puppetmaster::dns_alt_names',puppet),
 ) {
 
   class { 'puppetserver':
