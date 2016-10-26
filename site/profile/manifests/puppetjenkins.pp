@@ -23,7 +23,7 @@ class profile::puppetjenkins(
 	password => 'test'
   }
 
-  jenkins::plugin { 'gitlab': }
-  jenkins::plugin { 'gitlab-hook': }
+  jenkins::plugin { 'gitlab-plugin': }
+  jenkins::plugin { 'gitlab-hook-plugin': }
   
 }
