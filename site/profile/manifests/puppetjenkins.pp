@@ -20,7 +20,8 @@ class profile::puppetjenkins(
  }
   
   jenkins::user { 'test':
-	password => 'test'
+	email => test@test.local,
+	password => 'test',
   }
 
   jenkins::plugin { 'gitlab-plugin': }
